@@ -27,9 +27,8 @@ jobs:
       # Install Android SDK
       - name: Install Android SDK
         run: |
-          echo "sdkmanager --install 'platform-tools' 'platforms;android-31' 'build-tools;31.0.0'"
+          echo "sdkmanager --install 'platform-tools' 'platforms;android-31' 'build-tools;31.0.0'" | bash
           yes | sdkmanager --licenses
-          sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       # Cache Gradle dependencies to speed up builds
       - name: Cache Gradle packages
