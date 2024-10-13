@@ -24,6 +24,13 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      # Install Android SDK
+      - name: Install Android SDK
+        run: |
+          echo "sdkmanager --install 'platform-tools' 'platforms;android-31' 'build-tools;31.0.0'"
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
+
       # Cache Gradle dependencies to speed up builds
       - name: Cache Gradle packages
         uses: actions/cache@v3
@@ -37,7 +44,7 @@ jobs:
 
       # Build the project
       - name: Build with Gradle
-        run: ./gradlew assembleDebug
+        run: ./gradlew build
 
       # Upload the APK as an artifact
       - name: Upload APK
