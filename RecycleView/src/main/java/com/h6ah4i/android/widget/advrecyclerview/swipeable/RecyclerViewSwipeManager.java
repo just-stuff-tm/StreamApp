@@ -198,7 +198,7 @@ public class RecyclerViewSwipeManager implements SwipeableItemConstants {
                 (int) (rv.getResources().getDisplayMetrics().density * SLIDE_ITEM_IMMEDIATELY_SET_TRANSLATION_THRESHOLD_DP + 0.5f));
 
         mSwipeHorizontal = (layoutOrientation == CustomRecyclerViewUtils.ORIENTATION_VERTICAL);
-        mHandler = new InternalHandler(this);
+        mHandler = new InternalHandler(Looper.getMainLooper(), this);
     }
 
     /**
