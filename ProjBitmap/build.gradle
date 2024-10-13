@@ -1,13 +1,12 @@
-apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 23
+    compileSdkVersion 31 // Update to the latest compile SDK version
+
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.example.moran_lap.projbitmapv11"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 31 // Update to match the compile SDK version
         versionCode 1
         versionName "1.0"
     }
@@ -20,15 +19,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    //compile files('libs/rtmp/opencv.jar')
-    //compile files('libs/rtmp/ffmpeg.jar')
-    //compile files('libs/rtmp/javacpp.jar')
-    //compile files('libs/rtmp/javacv.jar')
-    compile project(':RecycleView')
-    //compile files('libs/android-support-v13.jar')
-    compile 'com.android.support:support-v13:23.4.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs') // Changed from compile to implementation
+    testImplementation 'junit:junit:4.12' // Changed from testCompile to testImplementation
+    implementation 'com.android.support:appcompat-v7:23.3.0' // Changed from compile to implementation
+    implementation 'com.android.support:design:23.3.0' // Changed from compile to implementation
+    // implementation files('libs/rtmp/opencv.jar') // Uncomment if needed
+    // implementation files('libs/rtmp/ffmpeg.jar') // Uncomment if needed
+    // implementation files('libs/rtmp/javacpp.jar') // Uncomment if needed
+    // implementation files('libs/rtmp/javacv.jar') // Uncomment if needed
+    implementation project(':RecycleView') // Changed from compile to implementation
+    // implementation files('libs/android-support-v13.jar') // Uncomment if needed
+    implementation 'com.android.support:support-v13:23.4.0' // Changed from compile to implementation
 }
+
