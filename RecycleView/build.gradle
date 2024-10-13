@@ -15,32 +15,19 @@
 */
 
 apply plugin: 'com.android.library'
-/*
-ext {
-    // required for 'android-maven-publish.gradle'
-    mavenPublishDestDir = new File(rootDir, "repository").absolutePath
-    mavenPublishDataFile = file('./library-data.properties').absolutePath
-    mavenPublishSigningSetting =  file('../signing/library-maven-publish-signing.properties').absolutePath
-}
-*/
-// Common configurations
-//apply from: '../common/android-set-common-properties.gradle'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 31 // Update to the latest SDK version
+    buildToolsVersion "31.0.0" // Update to the latest build tools version
+
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 23
-
-
-       // def dataProps = new Properties()
-     //   dataProps.load(project.file(project.mavenPublishDataFile).newDataInputStream())
-
-        //noinspection GroovyAssignabilityCheck
+        targetSdkVersion 31 // Update to match compileSdkVersion
         versionCode 1
         versionName "1.0"
+        namespace 'com.example.moran_lap.recyclerview' // Specify the namespace
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -56,13 +43,13 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
+    implementation 'com.android.support:appcompat-v7:23.4.0' // Replace compile with implementation
+    implementation 'com.android.support:recyclerview-v7:23.4.0' // Replace compile with implementation
 }
 
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
 }
 
-// NOTE: this line should be place at end of the file
+// NOTE: this line should be placed at the end of the file
 //apply from: '../common/android-maven-publish.gradle'
