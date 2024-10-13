@@ -1852,12 +1852,12 @@ public class RecyclerViewDragDropManager implements DraggableItemConstants {
             super(looper);  // Call the parent constructor with the Looper
             mHolder = holder;
         }
-    }
 
     public void release() {
         removeCallbacks(null); // This removes any pending posts of callbacks
         mHolder = null; // Clears the reference to the manager
     }
+
 
         @Override
         public void handleMessage(Message msg) {
