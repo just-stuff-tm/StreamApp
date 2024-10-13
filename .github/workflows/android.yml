@@ -38,15 +38,15 @@ jobs:
           # Rename the extracted directory to "latest"
           mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
 
-          # Set up environment variables
-          echo "##[add-path]$HOME/android-sdk/cmdline-tools/latest/bin"
-          echo "##[add-path]$HOME/android-sdk/platform-tools"
+          # Add paths to the environment variable for this job
+          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
+          echo "$HOME/android-sdk/platform-tools" >> $GITHUB_PATH
 
           # Accept licenses
-          yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+          yes | sdkmanager --licenses
 
           # Install required SDK components
-          $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools" "platforms;android-31" "build-tools;31.0.0"
+          sdkmanager --install "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       # Grant execute permission for gradlew
       - name: Grant execute permission for gradlew
