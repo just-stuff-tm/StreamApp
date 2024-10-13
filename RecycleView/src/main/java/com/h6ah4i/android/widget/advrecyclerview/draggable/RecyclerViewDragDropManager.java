@@ -12,11 +12,11 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- */
 
 package com.h6ah4i.android.widget.advrecyclerview.draggable;
 
 import android.graphics.Rect;
+import android.os.looper;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
 import android.os.Handler;
@@ -1847,14 +1847,17 @@ public class RecyclerViewDragDropManager implements DraggableItemConstants {
         private RecyclerViewDragDropManager mHolder;
         private MotionEvent mDownMotionEvent;
 
-        public InternalHandler(RecyclerViewDragDropManager holder) {
+        // Updated constructor to accept a Looper
+        public InternalHandler(Looper looper, RecyclerViewDragDropManager holder) {
+            super(looper);  // Call the parent constructor with the Looper
             mHolder = holder;
         }
+    }
 
-        public void release() {
-            removeCallbacks(null);
-            mHolder = null;
-        }
+    public void release() {
+        removeCallbacks(null); // This removes any pending posts of callbacks
+        mHolder = null; // Clears the reference to the manager
+    }
 
         @Override
         public void handleMessage(Message msg) {
