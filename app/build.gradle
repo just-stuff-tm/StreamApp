@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.example.moran_lap.streamapp' // Add this line
     compileSdkVersion 31 // Update to a newer version (consider using at least 31)
     buildToolsVersion "31.0.0" // Update to the latest build tools version
 
