@@ -23,11 +23,24 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      # Install Android SDK components
+      # Install the Android SDK and components
       - name: Install Android SDK
         run: |
-          echo "sdkmanager --install 'platform-tools' 'platforms;android-31' 'build-tools;31.0.0'" | bash
+          # Install Android SDK command line tools
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
+          unzip commandlinetools-linux-8512546_latest.zip -d $HOME/android-sdk/
+          mkdir -p $HOME/android-sdk/cmdline-tools
+          mv $HOME/android-sdk/cmdline-tools/latest $HOME/android-sdk/cmdline-tools/tools
+
+          # Set up environment variables
+          echo "##[add-path]$HOME/android-sdk/cmdline-tools/tools/bin"
+          echo "##[add-path]$HOME/android-sdk/platform-tools"
+
+          # Accept licenses
           yes | sdkmanager --licenses
+
+          # Install required SDK components
+          sdkmanager --install "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       # Grant execute permission for gradlew
       - name: Grant execute permission for gradlew
@@ -37,7 +50,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      # Optionally, you can upload the APK as an artifact
+      # Optionally, upload the APK as an artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
