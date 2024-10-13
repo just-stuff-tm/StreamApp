@@ -3,6 +3,8 @@ apply plugin: 'com.android.library' // Ensure this is a library module
 android {
     compileSdkVersion 31 // Use the latest compile SDK version
 
+    namespace 'com.example.moran_lap.projbitmapv11' // Add the namespace
+
     defaultConfig {
         // Removed applicationId as it's not allowed in library projects
         minSdkVersion 21
