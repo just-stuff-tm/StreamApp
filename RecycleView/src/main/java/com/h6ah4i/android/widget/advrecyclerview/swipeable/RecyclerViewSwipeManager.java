@@ -17,6 +17,7 @@
 package com.h6ah4i.android.widget.advrecyclerview.swipeable;
 
 import android.graphics.Rect;
+import android.os.Looper;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
