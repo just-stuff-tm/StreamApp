@@ -26,14 +26,18 @@ jobs:
       # Install the Android SDK and components
       - name: Install Android SDK
         run: |
-          # Install Android SDK command line tools
-          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
-          unzip commandlinetools-linux-8512546_latest.zip -d $HOME/android-sdk/
+          # Create the android-sdk directory
           mkdir -p $HOME/android-sdk/cmdline-tools
-          mv $HOME/android-sdk/cmdline-tools/latest $HOME/android-sdk/cmdline-tools/tools
+
+          # Download and extract command line tools
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
+          unzip commandlinetools-linux-8512546_latest.zip -d $HOME/android-sdk/cmdline-tools/
+
+          # Move the extracted tools to the expected location
+          mv $HOME/android-sdk/cmdline-tools/cmdline-tools/* $HOME/android-sdk/cmdline-tools/latest
 
           # Set up environment variables
-          echo "##[add-path]$HOME/android-sdk/cmdline-tools/tools/bin"
+          echo "##[add-path]$HOME/android-sdk/cmdline-tools/latest/bin"
           echo "##[add-path]$HOME/android-sdk/platform-tools"
 
           # Accept licenses
