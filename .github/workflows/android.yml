@@ -29,22 +29,24 @@ jobs:
           # Create the android-sdk directory
           mkdir -p $HOME/android-sdk/cmdline-tools
 
-          # Download and extract command line tools
+          # Download the command line tools
           wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
+
+          # Extract command line tools
           unzip commandlinetools-linux-8512546_latest.zip -d $HOME/android-sdk/cmdline-tools/
 
-          # Move the extracted tools to the expected location
-          mv $HOME/android-sdk/cmdline-tools/cmdline-tools/* $HOME/android-sdk/cmdline-tools/latest
+          # Rename the extracted directory to "latest"
+          mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
 
           # Set up environment variables
           echo "##[add-path]$HOME/android-sdk/cmdline-tools/latest/bin"
           echo "##[add-path]$HOME/android-sdk/platform-tools"
 
           # Accept licenses
-          yes | sdkmanager --licenses
+          yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
 
           # Install required SDK components
-          sdkmanager --install "platform-tools" "platforms;android-31" "build-tools;31.0.0"
+          $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
       # Grant execute permission for gradlew
       - name: Grant execute permission for gradlew
