@@ -1,10 +1,10 @@
-apply plugin: 'com.android.library' // Use 'com.android.application' if this is an application module
+apply plugin: 'com.android.library' // Ensure this is a library module
 
 android {
-    compileSdkVersion 31 // Update to the latest compile SDK version
+    compileSdkVersion 31 // Use the latest compile SDK version
 
     defaultConfig {
-        applicationId "com.example.moran_lap.projbitmapv11"
+        // Removed applicationId as it's not allowed in library projects
         minSdkVersion 21
         targetSdkVersion 31 // Update to match the compile SDK version
         versionCode 1
@@ -19,15 +19,17 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs') // Changed from compile to implementation
-    testImplementation 'junit:junit:4.12' // Changed from testCompile to testImplementation
-    implementation 'com.android.support:appcompat-v7:23.3.0' // Changed from compile to implementation
-    implementation 'com.android.support:design:23.3.0' // Changed from compile to implementation
-    // implementation files('libs/rtmp/opencv.jar') // Uncomment if needed
-    // implementation files('libs/rtmp/ffmpeg.jar') // Uncomment if needed
-    // implementation files('libs/rtmp/javacpp.jar') // Uncomment if needed
-    // implementation files('libs/rtmp/javacv.jar') // Uncomment if needed
-    implementation project(':RecycleView') // Changed from compile to implementation
-    // implementation files('libs/android-support-v13.jar') // Uncomment if needed
-    implementation 'com.android.support:support-v13:23.4.0' // Changed from compile to implementation
+    implementation fileTree(include: ['*.jar'], dir: 'libs') // Use implementation instead of compile
+    testImplementation 'junit:junit:4.12' // Use testImplementation instead of testCompile
+    implementation 'com.android.support:appcompat-v7:23.3.0' // Use implementation instead of compile
+    implementation 'com.android.support:design:23.3.0' // Use implementation instead of compile
+    // Uncomment if needed
+    // implementation files('libs/rtmp/opencv.jar')
+    // implementation files('libs/rtmp/ffmpeg.jar')
+    // implementation files('libs/rtmp/javacpp.jar')
+    // implementation files('libs/rtmp/javacv.jar')
+    implementation project(':RecycleView') // Use implementation instead of compile
+    // Uncomment if needed
+    // implementation files('libs/android-support-v13.jar')
+    implementation 'com.android.support:support-v13:23.4.0' // Use implementation instead of compile
 }
