@@ -882,8 +882,9 @@ public class RecyclerViewSwipeManager implements SwipeableItemConstants {
         private RecyclerViewSwipeManager mHolder;
         private MotionEvent mDownMotionEvent;
 
-        public InternalHandler(RecyclerViewSwipeManager holder) {
-            mHolder = holder;
+        public InternalHandler(Looper looper, RecyclerViewSwipeManager holder) {
+        super(looper);  // Call the parent constructor with the Looper
+        mHolder = holder;
         }
 
         public void release() {
