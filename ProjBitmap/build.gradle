@@ -1,7 +1,7 @@
+apply plugin: 'com.android.library' // Use 'com.android.application' if this is an application module
+
 android {
     compileSdkVersion 31 // Update to the latest compile SDK version
-
-    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.example.moran_lap.projbitmapv11"
@@ -31,4 +31,3 @@ dependencies {
     // implementation files('libs/android-support-v13.jar') // Uncomment if needed
     implementation 'com.android.support:support-v13:23.4.0' // Changed from compile to implementation
 }
-
